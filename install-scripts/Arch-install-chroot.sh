@@ -359,13 +359,15 @@ menuentry "Arch Linux" {
 }
 EOF
 
-# enable sddm for graphical target
+# enable some systemd units
 systemctl enable sddm.service
 systemctl enable NetworkManager.service
 systemctl enable bluetooth.service
+systemctl enable cronie.service
 systemctl enable cups.socket
 systemctl enable pkgfile-update.timer
 systemctl enable fstrim.timer
+
 
 echo "edit /boot/EFI/refind/refind.conf and insert correct UUID"
 

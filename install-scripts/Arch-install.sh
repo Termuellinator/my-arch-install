@@ -52,18 +52,20 @@ btrfs sub create /mnt/@paccache
 btrfs sub create /mnt/@var_tmp
 btrfs sub create /mnt/@var_log
 btrfs sub create /mnt/@snapshots
+btrfs sub create /mnt/@rw-snapshots
 btrfs sub create /mnt/@swap
 umount /mnt
 
 # Mount the subvolumes
 echo "mounting all subvolumes"
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@ /dev/mapper/cryptroot /mnt
-mkdir -p -p /mnt/{boot,home,var/cache/pacman/pkg,var/tmp,var/log,.snapshots,.swap}
+mkdir -p -p /mnt/{boot,home,var/cache/pacman/pkg,var/tmp,var/log,.snapshots,.rw-snapshots,.swap}
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@home /dev/mapper/cryptroot /mnt/home
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@paccache /dev/mapper/cryptroot /mnt/var/cache/pacman/pkg
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_tmp /dev/mapper/cryptroot /mnt/var/tmp
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_log /dev/mapper/cryptroot /mnt/var/log
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots
+mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@rw-snapshots /dev/mapper/cryptroot  /mnt/.rw-snapshots
 mount -o noatime,nodiratime,compress=no,space_cache=v2,ssd,subvol=@swap /dev/mapper/cryptroot /mnt/.swap
 
 
@@ -90,17 +92,18 @@ reflector -c "DE" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 echo "running pacstrap"
 pacstrap /mnt base base-devel linux linux-headers linux-firmware amd-ucode btrfs-progs sbsigntools \
     nano zstd networkmanager mesa vulkan-radeon libva-mesa-driver mesa-vdpau \
-    xf86-video-amdgpu openssh refind zsh zsh-completions acpi efibootmgr \
+    xf86-video-amdgpu openssh refind zsh zsh-completions acpi efibootmgr kompare \
     zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting git \
     pigz pbzip2 reflector plasma-meta kde-system-meta yakuake kate ark filelight kfind konsole kdf \
     kdeconnect krusader ktorrent kmail dolphin-plugins gwenview kaddressbook korganizer \
     krunner ksnip digikam firefox firefox-i18n-de fwupd gamemode gimp lsd man-db man-pages \
-    man-pages-de cantata gst-plugin-pipewire pipewire-alsa pipewire-pulse snapper \
+    man-pages-de cantata mpd gst-plugin-pipewire pipewire-alsa pipewire-pulse snapper \
     profile-sync-daemon kdialog solaar signal-desktop mumble teamspeak3 lutirs \
     prusa-slicer ksysguard libreoffice-fresh libreoffice-fresh-de aspell-de aspell-en \
-    flatpak flatpak-xdg-utils ttf-dejavu neochat pkgstats cups cups-filters cups-pdf cups-pk-helper \
+    flatpak flatpak-xdg-utils ttf-dejavu ttf-nerd-fonts-symbols neochat pkgstats cups cups-filters cups-pdf cups-pk-helper \
     print-manager system-config-printer powerline-fonts kdepim-addons okular bogofilter \
-    iotop neovim neovim-qt realtime-privileges
+    iotop neovim neovim-qt realtime-privileges noto-fonts-emoji hunspell hunspell-de hunspell-en_us \
+    plasma-wayland-session plasma-wayland-protocols 
 
 # generate the fstab
 echo "generating fstab"

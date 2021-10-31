@@ -71,17 +71,14 @@ zsh_add_plugin "hlissner/zsh-autopair"
 # zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
+# Use Autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up			
-bindkey '^[[B' history-substring-search-down
-
 
 # Key-bindings
 bindkey -e
@@ -102,6 +99,12 @@ bindkey '^[[1;5D' backward-word                                 #
 bindkey '^[[1;5C' forward-word                                  #
 bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
 bindkey '^[[Z' undo                                             # Shift+tab undo last action                                     # Shift+tab undo last action
+
+bindkey "$terminfo[kcuu1]" history-substring-search-up          # bind up and down to substring search
+bindkey "$terminfo[kcud1]" history-substring-search-down      # bind up and down to substring search
+bindkey '^[[A' history-substring-search-up			                   # bind up and down to substring search
+bindkey '^[[B' history-substring-search-down                        # bind up and down to substring search
+
 
 # FZF 
 # TODO update for mac

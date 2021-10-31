@@ -11,6 +11,7 @@ mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@p
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_tmp /dev/mapper/cryptroot /mnt/var/tmp
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_log /dev/mapper/cryptroot /mnt/var/log
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots
+mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@rw-snapshots /dev/mapper/cryptroot  /mnt/.rw-snapshots
 mount -o noatime,nodiratime,compress=no,space_cache=v2,ssd,subvol=@swap /dev/mapper/cryptroot /mnt/.swap
 
 
