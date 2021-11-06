@@ -98,12 +98,12 @@ pacstrap /mnt base base-devel linux linux-headers linux-firmware amd-ucode btrfs
     kdeconnect krusader ktorrent kmail dolphin-plugins gwenview kaddressbook korganizer \
     krunner ksnip digikam firefox firefox-i18n-de fwupd gamemode gimp lsd man-db man-pages \
     man-pages-de cantata mpd gst-plugin-pipewire pipewire-alsa pipewire-pulse snapper \
-    profile-sync-daemon kdialog solaar signal-desktop mumble teamspeak3 lutirs \
+    profile-sync-daemon kdialog solaar signal-desktop mumble teamspeak3 lutirs rebuild-detector \
     prusa-slicer ksysguard libreoffice-fresh libreoffice-fresh-de aspell-de aspell-en \
     flatpak flatpak-xdg-utils ttf-dejavu ttf-nerd-fonts-symbols neochat pkgstats cups cups-filters cups-pdf cups-pk-helper \
     print-manager system-config-printer powerline-fonts kdepim-addons okular bogofilter \
     iotop neovim neovim-qt realtime-privileges noto-fonts-emoji hunspell hunspell-de hunspell-en_us \
-    plasma-wayland-session plasma-wayland-protocols 
+    plasma-wayland-session plasma-wayland-protocols smplayer smplayer-themes 
 
 # generate the fstab
 echo "generating fstab"
