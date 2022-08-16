@@ -48,6 +48,7 @@ mount /dev/mapper/cryptroot /mnt
 echo "creating btrfs subvolumes"
 btrfs sub create /mnt/@
 btrfs sub create /mnt/@home
+btrfs sub create /mnt/@modules # keep kernel modules from being snapshoted to be able to boot into snapshots
 btrfs sub create /mnt/@paccache
 btrfs sub create /mnt/@var_tmp
 btrfs sub create /mnt/@var_log
@@ -59,9 +60,10 @@ umount /mnt
 # Mount the subvolumes
 echo "mounting all subvolumes"
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@ /dev/mapper/cryptroot /mnt
-mkdir -p -p /mnt/{boot,home,var/cache/pacman/pkg,var/tmp,var/log,.snapshots,.rw-snapshots,.swap}
+mkdir -p -p /mnt/{boot,home,usr/lib/modules,var/cache,var/tmp,var/log,.snapshots,.rw-snapshots,.swap}
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@home /dev/mapper/cryptroot /mnt/home
-mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@paccache /dev/mapper/cryptroot /mnt/var/cache/pacman/pkg
+mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@modules /dev/mapper/cryptroot /mnt/usr/lib/modules
+mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_cache /dev/mapper/cryptroot /mnt/var/cache
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_tmp /dev/mapper/cryptroot /mnt/var/tmp
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@var_log /dev/mapper/cryptroot /mnt/var/log
 mount -o noatime,nodiratime,compress=zstd,commit=60,space_cache=v2,ssd,subvol=@snapshots /dev/mapper/cryptroot /mnt/.snapshots
@@ -97,13 +99,14 @@ pacstrap /mnt base base-devel linux linux-headers linux-firmware amd-ucode btrfs
     pigz pbzip2 reflector plasma-meta kde-system-meta yakuake kate ark filelight kfind konsole kdf \
     kdeconnect krusader ktorrent kmail dolphin-plugins gwenview kaddressbook korganizer \
     krunner ksnip digikam firefox firefox-i18n-de fwupd gamemode gimp lsd man-db man-pages \
-    man-pages-de cantata mpd gst-plugin-pipewire pipewire-alsa pipewire-pulse snapper \
+    man-pages-de cantata mpd wireplumber gst-plugin-pipewire pipewire-alsa pipewire-pulse snapper \
     profile-sync-daemon kdialog solaar signal-desktop mumble teamspeak3 lutirs rebuild-detector \
     prusa-slicer ksysguard libreoffice-fresh libreoffice-fresh-de aspell-de aspell-en \
     flatpak flatpak-xdg-utils ttf-dejavu ttf-nerd-fonts-symbols neochat pkgstats cups cups-filters cups-pdf cups-pk-helper \
     print-manager system-config-printer powerline-fonts kdepim-addons okular bogofilter \
     iotop neovim neovim-qt realtime-privileges noto-fonts-emoji hunspell hunspell-de hunspell-en_us \
-    plasma-wayland-session plasma-wayland-protocols smplayer smplayer-themes 
+    plasma-wayland-session plasma-wayland-protocols smplayer smplayer-themes ffmpegthumbs \
+    kdegraphics-thumbnailers
 
 # generate the fstab
 echo "generating fstab"
