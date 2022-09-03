@@ -21,6 +21,7 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias ip='ip -color=auto'
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -56,7 +57,9 @@ alias list_systemctl="systemctl list-unit-files --state=enabled"
 
 alias sudo='sudo '
 alias lsd='lsd'
-alias ls='lsd --group-dirs first'
+#alias ls='lsd --group-dirs first'
+alias ls='exa'
+alias lgit='exa --long --git'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -69,7 +72,7 @@ alias ...='cd ../../..'
 alias mirrorup='sudo reflector -c "DE" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist'
 alias pacup='sudo pacman -Syu'
 alias aurup='paru -Sua'
-alias downgrade='sudo downgrade --pacman-cache /var/cache/pacman/pkg --pacman-cache /var/cache/paru --pacman-cache /var/cache/yay'
+alias downgrade='sudo downgrade --pacman-cache /var/cache/pacman/pkg --pacman-cache /var/cache/pacman/pkg/paru --pacman-cache /var/cache/yay'
 alias orphan='pacman -Qdtq'
 alias stow='stow -t ~'
 
