@@ -58,6 +58,9 @@ alias list_systemctl="systemctl list-unit-files --state=enabled"
 # pdnsd-ctl needs to use the same cache dir as set in /etc/pdnsd.config
 alias pdnsd-ctl='pdnsd-ctl -c /var/cache/pacman/pkg/pdnsd'
 
+# some git specific aliases
+alias git-graph='git log --all --oneline --graph'
+
 alias sudo='sudo '
 alias lsd='lsd'
 #alias ls='lsd --group-dirs first'
