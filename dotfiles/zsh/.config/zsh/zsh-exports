@@ -30,3 +30,7 @@ WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider
 # unset __conda_setup
 # # <<< conda initialize <<<
 
+export MANGOHUD=1
+
+# set ipdb as default python debuggers
+export  PYTHONBREAKPOINT=ipdb.set_trace

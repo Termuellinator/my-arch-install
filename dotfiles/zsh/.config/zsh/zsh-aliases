@@ -83,5 +83,16 @@ alias downgrade='sudo downgrade --pacman-cache /var/cache/pacman/pkg --pacman-ca
 alias paccache='paccache --cachedir /var/cache/pacman/pkg/yay/ --cachedir /var/cache/pacman/pkg/paru/ --cachedir /var/cache/pacman/pkg/' 
 alias orphan='pacman -Qdtq'
 alias stow='stow -t ~'
-
+alias py='python'
 alias protontricks-flat='flatpak run com.github.Matoking.protontricks'
+
+# wake tardis
+alias tardis='wol -v -p 9 6C:4B:90:4C:47:5E'
+# shutdown tardis
+alias tardis_sd='ssh tardis shutdown'
+
+# zip world save and copy it to downloads
+alias dw_backup='ssh direnub "zip -r - /home/termy/direwolf/world /home/termy/direwolf/config /home/termy/direwolf/server.properties" > /home/termy/Downloads/dw_backup_$(date +"%Y_%m_%d").zip'
+
+alias enc_backup='ssh hellman "zip -r - /home/termy/encrypted/world /home/termy/encrypted/config /home/termy/encrypted/server.properties" > /home/termy/Downloads/encrypted_backup_$(date +"%Y_%m_%d").zip'
+
