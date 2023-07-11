@@ -85,6 +85,7 @@ alias orphan='pacman -Qdtq'
 alias stow='stow -t ~'
 alias py='python'
 alias protontricks-flat='flatpak run com.github.Matoking.protontricks'
+alias code="flatpak run com.vscodium.codium "
 
 # wake tardis
 alias tardis='wol -v -p 9 6C:4B:90:4C:47:5E'
@@ -96,3 +97,4 @@ alias dw_backup='ssh direnub "zip -r - /home/termy/direwolf/world /home/termy/di
 
 alias enc_backup='ssh hellman "zip -r - /home/termy/encrypted/world /home/termy/encrypted/config /home/termy/encrypted/server.properties" > /home/termy/Downloads/encrypted_backup_$(date +"%Y_%m_%d").zip'
 
+alias sky_backup='ssh hellman "zip -r - /home/termy/skycapsule/world /home/termy/skycapsule/config /home/termy/skycapsule/server.properties" > /home/termy/Downloads/skycapsule_backup_$(date +"%Y_%m_%d").zip'
