@@ -99,3 +99,7 @@ alias dw_backup='ssh direnub "zip -r - /home/termy/direwolf/world /home/termy/di
 alias enc_backup='ssh hellman "zip -r - /home/termy/encrypted/world /home/termy/encrypted/config /home/termy/encrypted/server.properties" > /home/termy/Downloads/encrypted_backup_$(date +"%Y_%m_%d").zip'
 
 alias sky_backup='ssh hellman "zip -r - /home/termy/skycapsule/world /home/termy/skycapsule/config /home/termy/skycapsule/server.properties" > /home/termy/Downloads/skycapsule_backup_$(date +"%Y_%m_%d").zip'
+
+# run ollama with custom model directory
+alias ollama_serve='OLLAMA_MODELS=/media/vms/ollama ollama serve'
+alias ollama_dolphin='ollama run dolphin-mixtral:latest'
