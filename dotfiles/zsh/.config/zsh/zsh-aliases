@@ -66,9 +66,9 @@ alias git-graph='git log --all --oneline --graph'
 alias sudo='sudo '
 alias lsd='lsd'
 #alias ls='lsd --group-dirs first'
-alias ls='eza'
-alias lgit='eza --long --git'
-alias ltgit='eza --long --git --tree --all --ignore-glob=".git"'
+alias ls='exa'
+alias lgit='exa --long --git'
+alias ltgit='exa --long --git --tree --all --ignore-glob=".git"'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -87,6 +87,7 @@ alias stow='stow -t ~'
 alias py='python'
 alias protontricks-flat='flatpak run com.github.Matoking.protontricks'
 alias code="flatpak run com.vscodium.codium "
+alias cat="batcat"
 
 # wake tardis
 alias tardis='wol -v -p 9 6C:4B:90:4C:47:5E'
